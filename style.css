@@ -10,9 +10,66 @@ body {
 }
 
 h1 {
-    color: #fff;
+    color: #00ff00;
     font-size: 2.5rem;
     margin-bottom: 20px;
+    text-shadow: #00ff73 5px 5px 20px;
+}
+
+#scoreboard {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    color: rgba(0, 255, 195, 0.97);
+    text-shadow: #66ff00 2px 2px 10px;
+}
+
+.menu-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.menu-icon {
+  font-size: 24px;
+  color: #00ff00;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.dropdown-menu {
+  display: auto;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.95);
+  border: 1px solid #00ff00;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00ff00;
+}
+
+.dropdown-menu button {
+  background-color: #00ff00;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.dropdown-menu button:hover {
+  background-color: #33ff33;
 }
 
 #GameBoard {
@@ -31,26 +88,23 @@ h1 {
     align-items: center;
     font-size: 36px;
     font-weight: bold;
-    border: 2px solid #39ff14; /* Neon green */
+    border: 2px solid #39ff14;
     color: white;
     cursor: pointer;
 }
 
-/* Neon X */
 .cell.x {
     color: red;
     text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 30px red;
     animation: neon-glow-red 1.5s infinite alternate;
 }
 
-/* Neon O */
 .cell.o {
-    color: #00bfff;
-    text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+    color: #01d0ff;
+    text-shadow: 0 0 5px #01d0ff, 0 0 10px #01d0ff, 0 0 20px #01d0ff, 0 0 30px #01d0ff;
     animation: neon-glow-blue 1.5s infinite alternate;
 }
 
-/* Glow animations */
 @keyframes neon-glow-red {
     from {
         text-shadow: 0 0 5px red, 0 0 10px red;
@@ -72,16 +126,142 @@ h1 {
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #aefcdf;
+    background-color: #01f93f;
     color: black;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     margin: 10px;
-    box-shadow: 0 0 10px #aefcdf, 0 0 20px #aefcdf;
+    box-shadow: 0 0 20px #00ff00;
     transition: transform 0.2s ease;
 }
 
 button:hover {
     transform: scale(1.05);
+}
+
+/* Modern Win Popup */
+.modern-popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  background: rgba(10, 10, 10, 0.9);
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  border: 2px solid #02ea38;
+  box-shadow: 0 0 20px #00ff51;
+  animation: popupFade 0.3s ease;
+}
+
+.popup-box h2 {
+  color: #02ff28;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.popup-actions .btn {
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.841);
+  transition: 0.3s ease;
+}
+
+.popup-actions .replay {
+  background: #66ff00;
+}
+
+.popup-actions .replay:hover {
+  background: #66ff00;
+}
+
+.popup-actions .home {
+  background: #66ff00;
+}
+
+.popup-actions .home:hover {
+  background: #66ff00;
+}
+
+@keyframes popupFade {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* History Popup */
+.history-popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.history-popup .popup-box {
+  background: rgba(10, 10, 10, 0.9);
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  border: 2px solid #0dff00;
+  box-shadow: 0 0 20px #0dff00;
+  animation: popupFade 0.3s ease;
+  max-width: 600px;
+  width: 80%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.history-popup .popup-box h2 {
+  color: #0dff00;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.history-content {
+  color: rgb(13, 252, 0);
+  text-align: left;
+  padding: 10px 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.history-content p {
+  margin: 8px 0;
+  border-bottom: 1px solid #00f0ff33;
+  padding-bottom: 6px;
+}
+
+/* Close button (reuse same style as others) */
+.popup-actions .close {
+  background-color: #00ffa6;
+}
+
+.popup-actions .close:hover {
+  background-color: #00ff73;
 }
