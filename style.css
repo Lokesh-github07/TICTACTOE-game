@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#GameBoard {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    border: 2px solid #39ff14; /* Neon green */
+    color: white;
+    cursor: pointer;
+}
+
+/* Neon X */
+.cell.x {
+    color: red;
+    text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 30px red;
+    animation: neon-glow-red 1.5s infinite alternate;
+}
+
+/* Neon O */
+.cell.o {
+    color: #00bfff;
+    text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+    animation: neon-glow-blue 1.5s infinite alternate;
+}
+
+/* Glow animations */
+@keyframes neon-glow-red {
+    from {
+        text-shadow: 0 0 5px red, 0 0 10px red;
+    }
+    to {
+        text-shadow: 0 0 20px red, 0 0 30px red;
+    }
+}
+
+@keyframes neon-glow-blue {
+    from {
+        text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff;
+    }
+    to {
+        text-shadow: 0 0 20px #00bfff, 0 0 30px #00bfff;
+    }
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #aefcdf;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 0 10px #aefcdf, 0 0 20px #aefcdf;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
