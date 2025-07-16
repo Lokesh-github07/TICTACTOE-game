@@ -4,34 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
 </head>
 <body>
   <h1>TIC TAC TOE</h1>
 
-  <div id="scoreboard">
-    <p>X Wins: <span id="xWins">0</span></p>
-    <p>O Wins: <span id="oWins">0</span></p>
-    <p>Match Winner: <span id="matchWinner">–</span></p>
+
+  <!-- Start Screen -->
+  <div id="start-screen">
+    <p>Choose your game mode:</p>
+    <button onclick="startGame('multiplayer')">Multiplayer</button>
+    <button onclick="startGame('computer')">Vs Computer</button>
   </div>
 
-  <div id="GameBoard">
-    <div id="cell-0" class="cell" onclick="makeMove(0)"></div>
-    <div id="cell-1" class="cell" onclick="makeMove(1)"></div>
-    <div id="cell-2" class="cell" onclick="makeMove(2)"></div>
-    <div id="cell-3" class="cell" onclick="makeMove(3)"></div>
-    <div id="cell-4" class="cell" onclick="makeMove(4)"></div>
-    <div id="cell-5" class="cell" onclick="makeMove(5)"></div>
-    <div id="cell-6" class="cell" onclick="makeMove(6)"></div>
-    <div id="cell-7" class="cell" onclick="makeMove(7)"></div>
-    <div id="cell-8" class="cell" onclick="makeMove(8)"></div>
-  </div>
+  <!-- Game Container -->
+  <div id="game-container" style="display: none;">
+    
+    <!-- Scoreboard -->
+    <div id="scoreboard">
+      <p>X Wins: <span id="xWins">0</span></p>
+      <p>O Wins: <span id="oWins">0</span></p>
+    </div>
 
-  <div class="controls">
-    <button onclick="resetBoard()">Next Round</button>
-    <button onclick="resetMatch()">Reset Match</button>
+    <!-- Three Dots Menu -->
+<div class="menu-container">
+  <div class="menu-icon" onclick="toggleMenu()">⋮</div>
+  <div id="menuDropdown" class="dropdown">
+    <button onclick="returnHome()">🏠 Home</button>
+   <button onclick="viewHistory()">📜 History</button>
   </div>
+</div>
 
-  <script src="script.js"></script>
+
+
+    <!-- Game Board -->
+    <div id="GameBoard">
+      <div id="cell-0" class="cell" onclick="makeMove(0)"></div>
+      <div id="cell-1" class="cell" onclick="makeMove(1)"></div>
+      <div id="cell-2" class="cell" onclick="makeMove(2)"></div>
+      <div id="cell-3" class="cell" onclick="makeMove(3)"></div>
+      <div id="cell-4" class="cell" onclick="makeMove(4)"></div>
+      <div id="cell-5" class="cell" onclick="makeMove(5)"></div>
+      <div id="cell-6" class="cell" onclick="makeMove(6)"></div>
+      <div id="cell-7" class="cell" onclick="makeMove(7)"></div>
+      <div id="cell-8" class="cell" onclick="makeMove(8)"></div>
+    </div>
+
+   <!-- Custom Stylish Win Popup -->
+<div id="winPopup" class="modern-popup">
+  <div class="popup-box">
+    <h2 id="winnerText">Game Over!</h2>
+    <div class="popup-actions">
+      <button class="btn replay" onclick="restartGame()">Replay</button>
+      <button class="btn home" onclick="returnHome()">Home</button>
+    </div>
+  </div>
+</div>
+
+<!-- History Popup -->
+<div class="history-popup" id="historyPopup">
+  <div class="popup-box">
+    <h2>Game History</h2>
+    <div id="historyList" class="history-content"></div>
+    <div class="popup-actions">
+      <button class="btn close" onclick="closeHistory()">Close</button>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script> <!-- Link to external JS -->
 </body>
 </html>
